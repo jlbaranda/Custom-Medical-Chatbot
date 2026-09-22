@@ -1,0 +1,10 @@
+Diabetes
+Asthma
+High Blood Pressure
+Flu
+Migraine
+Anemia
+Hypothyroidism
+Cholesterol
+Allergy
+Pneumonia

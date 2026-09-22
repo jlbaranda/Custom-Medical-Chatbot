@@ -1,0 +1,111 @@
+# ============================================================
+# Custom Medical Chatbot - Git ignore rules
+# Current ingestion version: v7
+# ============================================================
+
+# ------------------------------------------------------------
+# Secrets / local environment configuration
+# Never commit API keys, tokens, or machine-specific settings.
+# ------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.template
+
+# ------------------------------------------------------------
+# Generated medical corpus data
+# These files are reproducible by running the ingestion pipeline.
+# Keep the directory placeholders so a fresh clone has the layout.
+# ------------------------------------------------------------
+
+# Downloaded MedlinePlus XML and other raw source files
+data/raw/*
+!data/raw/.gitkeep
+
+# Generated MedlinePlus discovery/index files
+data/discovery/**/*.json
+data/discovery/**/*.jsonl
+
+# Cleaned source documents generated from MedlinePlus / NIH / CDC / NCI
+data/documents/**/*.json
+
+# Generated RAG chunks
+data/chunks/*
+!data/chunks/.gitkeep
+
+# Ingestion audit logs, manifests, and run summaries
+data/logs/*
+!data/logs/.gitkeep
+
+# NOTE: data/samples/ is intentionally NOT ignored.
+# Small sample/test datasets can be committed for teammates and tests.
+
+# ------------------------------------------------------------
+# Python environments / bytecode / caches
+# ------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.hypothesis/
+
+# ------------------------------------------------------------
+# Test / coverage output
+# ------------------------------------------------------------
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.pytest_cache/
+junit.xml
+
+# ------------------------------------------------------------
+# Python packaging / build output
+# ------------------------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# ------------------------------------------------------------
+# Temporary files / logs
+# ------------------------------------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+~$*
+
+# ------------------------------------------------------------
+# IDE / editor files
+# ------------------------------------------------------------
+.idea/
+.vscode/
+*.iml
+
+# ------------------------------------------------------------
+# Operating-system files
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ------------------------------------------------------------
+# Local tooling
+# ------------------------------------------------------------
+.tox/
+.nox/
