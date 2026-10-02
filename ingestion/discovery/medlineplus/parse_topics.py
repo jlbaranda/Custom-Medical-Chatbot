@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -11,7 +11,7 @@ from typing import Iterable
 from ingestion.common.language_filters import is_english_language, is_obviously_spanish_url
 from ingestion.common.source_policy import evaluate_trusted_source
 
-DEFAULT_XML_URL = "https://medlineplus.gov/xml/mplus_topics_2026-09-18.xml"
+DEFAULT_XML_URL = "https://medlineplus.gov/xml/mplus_topics_2026-09-30.xml"
 
 
 def slugify(value: str) -> str:
@@ -256,7 +256,7 @@ def main() -> None:
         description="Use MedlinePlus as a discovery index for selected English medical topics."
     )
     parser.add_argument("--xml-url", default=DEFAULT_XML_URL)
-    parser.add_argument("--xml-path", default="data/raw/mplus_topics_2026-09-18.xml")
+    parser.add_argument("--xml-path", default="data/raw/mplus_topics_2026-09-30.xml")
     parser.add_argument(
         "--selected-topics",
         default="ingestion/discovery/medlineplus/selected_topics.txt",
@@ -281,3 +281,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

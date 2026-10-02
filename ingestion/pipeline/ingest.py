@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 import json
@@ -223,7 +223,7 @@ def run_pipeline(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the medical chatbot ingestion pipeline.")
     parser.add_argument("--xml-url", default=DEFAULT_XML_URL)
-    parser.add_argument("--xml-path", default="data/raw/mplus_topics_2026-09-18.xml")
+    parser.add_argument("--xml-path", default="data/raw/mplus_topics_2026-09-30.xml")
     parser.add_argument(
         "--selected-topics",
         default="ingestion/discovery/medlineplus/selected_topics.txt",
@@ -259,3 +259,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
