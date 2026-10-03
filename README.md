@@ -260,3 +260,8 @@ Failures and skipped sources are recorded in:
 ```text
 data/logs/source_downloads.jsonl
 ```
+
+## Guardrails
+
+The safety layer (emergency detection, refusals, citation checks) lives in `guardrails/`.
+Setup and usage: [guardrails/README.md](guardrails/README.md). Quick try: `python scripts/ask.py "what are the symptoms of anemia"`.

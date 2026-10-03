@@ -1,0 +1,77 @@
+# Guardrail policy. All tunable behaviour lives here, not in code.
+# Changing this file changes the policy hash recorded in every decision log entry.
+
+version = "0.1.0"
+
+# Intended use is general health information, not diagnosis or treatment
+# (keeps the product outside medical-device software scope by default).
+intended_use = "general_information"
+
+[classifier]
+# "transformer" (fine-tuned model in model_dir), "tfidf" (baseline), or "llm_judge".
+backend = "transformer"
+model_dir = "models/guardrail-biomedbert-v2"
+tfidf_path = "models/guardrail-tfidf-v2.pkl"
+
+[classifier.llm_judge]
+# Optional. "ollama" runs locally; "openrouter" needs OPENROUTER_API_KEY (your own key, off by default).
+transport = "ollama"
+model = "qwen2.5:3b"
+host = "http://localhost:11434"
+
+[emergency]
+# Classifier backup for the regex fast path: P(emergency) + P(self_harm) at or above this
+# also triggers the emergency response. Low on purpose: recall over precision.
+classifier_threshold = 0.35
+
+[risk]
+# risk = P(intent) * (general_weight + (1 - general_weight) * P(personal))
+# so a general question ("usual adult dose of X") scores lower than "how much X for my kid".
+general_weight = 0.6
+# Deployed shift, added to every redirect/refuse threshold below. Positive = refuses less.
+# 0.0 is the safest point in the BiomedBERT v2 sweep (eval/results); +0.10 halves over-refusal
+# for slightly more under-refusal.
+threshold_shift = 0.0
+# Jailbreak/roleplay framing around a risky ask escalates REDIRECT to REFUSE.
+injection_threshold = 0.5
+
+# Per-intent thresholds on risk. risk < redirect -> ANSWER, < refuse -> REDIRECT, else REFUSE.
+# Shift all thresholds with GuardrailPolicy(threshold_shift=...) for over/under-refusal sweeps.
+[intents.diagnosis]
+redirect = 0.40
+refuse = 0.97
+
+[intents.dosing]
+redirect = 0.35
+refuse = 0.70
+
+[intents.treatment_decision]
+redirect = 0.40
+refuse = 0.90
+
+[retrieval]
+top_k = 4
+candidates = 8           # BM25 candidates passed to the reranker
+# No strong source match, no answer. The gate trusts the cross-encoder relevance score
+# (comparable across queries), not raw BM25. Set reranker = "" to use the lexical fallback.
+reranker = "ncbi/MedCPT-Cross-Encoder"
+reranker_quantize = false  # true: ~2x faster, scores shift, recalibrate
+min_rerank_score = 9.5      # calibrated: python -m guardrails.eval.calibrate_gate (bal. acc 0.96)
+min_rerank_score_redirect = 8.0
+rerank_keep_margin = 2.0 # also keep passages scoring within this of the threshold
+# Lexical fallback (no reranker):
+min_score = 6.0          # BM25 score of the best passage
+min_coverage = 0.5       # fraction of query content words found in the top passages
+# Redirects retrieve general info around a personal story ("always tired, do I have anemia"),
+# so most query words are narrative and only the topic needs to match.
+min_coverage_redirect = 0.3
+
+[output]
+# Fraction of a sentence's content words that must appear in the passage it cites.
+min_support = 0.5
+# Drop sentences containing dose-like quantities (mg, units, tablets...) in these actions.
+block_doses_in = ["answer", "redirect"]
+
+[log]
+path = "data/logs/guardrail_decisions.jsonl"
+enabled = true

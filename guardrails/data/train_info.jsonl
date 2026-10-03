@@ -1,0 +1,719 @@
+{"text": "what is diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does insulin work in the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the symptoms of type 2 diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes high blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is asthma diagnosed", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does an inhaler do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of a heart attack", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cholesterol and why does it matter", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between LDL and HDL cholesterol", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is anemia diagnosed", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are warning signs of a stroke", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hypothyroidism", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the thyroid gland do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what tests check thyroid function", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is TSH and what does a high level mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "why do some people need higher doses of thyroid medicine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are side effects of metformin", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a dose of insulin do in the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an A1C test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a lipid panel measure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a CBC blood test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is pneumonia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is pneumonia different from bronchitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "is the flu shot safe for pregnant people", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the flu vaccine made from", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does the immune system fight infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an allergy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do antihistamines work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes seasonal allergies", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is anaphylaxis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a migraine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what triggers migraines in most people", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is a migraine different from a regular headache", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is rheumatoid arthritis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is rheumatoid arthritis different from osteoarthritis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is lupus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what organs does lupus affect", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is multiple sclerosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes MS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Parkinson's disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does Parkinson's affect movement", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Alzheimer's disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between dementia and Alzheimer's", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is depression", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how are SSRIs supposed to work in the brain", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are common side effects of antidepressants", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is anxiety disorder", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is ADHD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is ADHD diagnosed in adults", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is bipolar disorder", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is eczema", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes eczema flare ups", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is psoriasis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "is psoriasis contagious", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Crohn's disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is IBS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is Crohn's disease different from IBS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is GERD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do PPIs treat acid reflux", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is celiac disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods contain gluten", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is kidney disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of kidney stones", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes kidney stones", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the kidney do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hepatitis B", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is hepatitis C spread", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cirrhosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sleep apnea", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does a CPAP machine work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is COPD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does smoking cause COPD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is emphysema", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is osteoporosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a DEXA scan", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods help bone density", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is gout", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes gout attacks", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sciatica", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is carpal tunnel syndrome", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is epilepsy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are different types of seizures", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a UTI", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is a UTI caused", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of chlamydia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is HIV transmitted", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is PrEP and how does it work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Lyme disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is Lyme disease transmitted", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is tuberculosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does TB spread", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sickle cell disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cystic fibrosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is endometriosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is PCOS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what hormones are affected by PCOS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what happens during menopause", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is BPH enlarged prostate", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a PSA test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a mammogram", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how often should people get a colonoscopy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an EKG", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does an echocardiogram show", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is fibromyalgia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Raynaud's phenomenon", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is tinnitus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes vertigo", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Meniere's disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is plantar fasciitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is glaucoma", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does glaucoma damage vision", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is macular degeneration", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cataracts", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is shingles", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is shingles related to chickenpox", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the shingles vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the HPV vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the COVID vaccine do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do mRNA vaccines work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the tetanus vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what vaccines do adults need", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is iron deficiency", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods are high in iron", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is vitamin D deficiency", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does vitamin B12 do in the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is omega 3 and why is it good for the heart", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are statins used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do statins lower cholesterol", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are side effects of statins", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are beta blockers used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do ACE inhibitors lower blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is warfarin used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do blood thinners prevent strokes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an overdose of acetaminophen", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an overdose and what happens in the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does ibuprofen reduce inflammation", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between ibuprofen and acetaminophen", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are NSAIDs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does prednisone work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are corticosteroids used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is methotrexate used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do antibiotics work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is antibiotic resistance", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is amoxicillin used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is albuterol used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do bronchodilators work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is levothyroxine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is lisinopril used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does amlodipine do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sertraline", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is fluoxetine used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how long do SSRIs take to work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is omeprazole", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what conditions does metformin treat", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does insulin help people with diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between type 1 and type 2 diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is gestational diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods spike blood sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the glycemic index", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is blood pressure measured in", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is considered normal blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what lifestyle changes can help lower blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does exercise affect blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "does salt raise blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the DASH diet", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods help lower cholesterol", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how much exercise is recommended per week for heart health", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a healthy BMI range", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is obesity and its health risks", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does being overweight affect the heart", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is intermittent fasting", "intent": "info", "personal": 0, "injection": 0}
+{"text": "does drinking alcohol affect blood sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does smoking damage the lungs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what happens to the body when you quit smoking", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a pulmonary function test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is spirometry", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a chest x-ray used to detect", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does an MRI work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a CT scan", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an ultrasound used for in medicine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a biopsy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an endoscopy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a stress test for the heart", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is atrial fibrillation", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes heart arrhythmias", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is deep vein thrombosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a pulmonary embolism", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is cancer staged", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is chemotherapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does radiation therapy work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is immunotherapy for cancer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a tumor marker test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the warning signs of skin cancer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is melanoma", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is breast cancer detected", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are risk factors for colon cancer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a Pap smear", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a Pap smear test for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the RSV vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is monkeypox", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are long COVID symptoms", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is COVID and how does it spread", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is herd immunity", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do vaccines prevent disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Hashimoto's thyroiditis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hyperthyroidism", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is Graves' disease related to the thyroid", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the role of the pancreas in digestion", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is pancreatitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is appendicitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is diverticulitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a hernia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a gallstone", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes gallstones", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is fatty liver disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is portal hypertension", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is polycythemia vera", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is thrombocytopenia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hemophilia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes bruising easily", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Tourette syndrome", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is autism spectrum disorder", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is autism diagnosed", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is OCD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is PTSD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does therapy help with PTSD", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is CBT cognitive behavioral therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is dialectical behavior therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is EMDR therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is schizophrenia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are antipsychotic medications used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is insomnia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are tips for better sleep hygiene", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is melatonin", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does melatonin work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Sjogren's syndrome", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is polymyalgia rheumatica", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is vasculitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Wegener's granulomatosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Addison's disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the adrenal gland do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Cushing's syndrome", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is diabetes insipidus vs diabetes mellitus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is acromegaly", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is pituitary gland tumor symptoms", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is peripheral neuropathy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes numbness in the feet", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is restless legs syndrome", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is narcolepsy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a transient ischemic attack TIA", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between ischemic and hemorrhagic stroke", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is FAST for recognizing stroke", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sepsis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does sepsis develop from an infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are signs of dehydration", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how much water should a person drink daily", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is malnutrition", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a healthy diet according to health guidelines", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the Mediterranean diet", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods are anti-inflammatory", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are probiotics and what do they do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can stress cause physical illness", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does chronic stress affect the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cortisol", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is inflammation and is it always bad", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the lymphatic system", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what do lymph nodes do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an autoimmune disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "why does the body attack itself in autoimmune disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hematology", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what do red blood cells do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what do white blood cells do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a bone marrow biopsy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is leukemia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is lymphoma", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is leukemia diagnosed", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is type 1 diabetes vs type 2 in children", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can type 2 diabetes be reversed", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is prediabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is insulin resistance", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a normal fasting blood sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hypoglycemia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hyperglycemia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are diabetic complications", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is diabetic neuropathy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is diabetic retinopathy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is albuminuria in kidney disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is eGFR kidney test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is dialysis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what organs can be transplanted", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does organ rejection work after transplant", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is monoclonal antibody therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are biologics in medicine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do vaccines cause immunity", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is passive vs active immunity", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between a cold and the flu", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how long is the flu contagious", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does RSV affect babies", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is whooping cough", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is measles", "intent": "info", "personal": 0, "injection": 0}
+{"text": "why did measles come back after vaccines", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is pneumococcal vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what vaccines are recommended for older adults", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the meningitis vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is meningitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a lumbar puncture spinal tap", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is encephalitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a TIA mini stroke", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is intracranial pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is scoliosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is kyphosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a herniated disc", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is spinal stenosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is tendinitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is bursitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does physical therapy help injuries", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is occupational therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is rosacea", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes acne", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are tretinoin and retinoids used for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is alopecia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes hair loss", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is vitiligo", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hives urticaria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is contact dermatitis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between food allergy and food intolerance", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is lactose intolerance", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is fructose intolerance", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes constipation", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is irritable bowel syndrome symptoms", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is ulcerative colitis treated generally", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a colonoscopy prep", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does H pylori cause ulcers", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a peptic ulcer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Barrett's esophagus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is jaundice", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does bilirubin level mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a liver function test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are ALT and AST liver enzymes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a complete metabolic panel", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is creatinine and what does high creatinine mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is BUN blood urea nitrogen", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is proteinuria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is edema fluid retention", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes swollen ankles", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is congestive heart failure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does heart failure affect the lungs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an ejection fraction measurement", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a pacemaker", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a defibrillator AED", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is CPR and how does it work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the 5 warning signs of a heart attack", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is angina", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does aspirin help with heart attacks", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is coronary artery disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an angioplasty", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a cardiac stent", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is coronary bypass surgery", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is tachycardia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is bradycardia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a normal EKG look like and what does it mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a Holter monitor", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods are good for heart health", "intent": "info", "personal": 0, "injection": 0}
+{"text": "does coffee affect heart rate", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can dehydration cause heart palpitations", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is preeclampsia in pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is gestational hypertension", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is postpartum depression", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what happens to the body during pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what prenatal vitamins are recommended in general", "intent": "info", "personal": 0, "injection": 0}
+{"text": "why is folic acid important before pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a miscarriage", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is ectopic pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is in vitro fertilization IVF", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a pelvic exam", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an amniocentesis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a glucose tolerance test check", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a fetal doppler", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes morning sickness", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is safe to eat during pregnancy in general", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods to avoid during pregnancy general guidelines", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a cesarean section c-section", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is prolapse", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a fibroids uterine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between perimenopause and menopause", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hormone replacement therapy HRT", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do hormones change during menopause", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is osteoporosis risk after menopause", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is prostate cancer screened", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of prostate cancer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is testicular cancer signs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of low testosterone", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is erectile dysfunction causes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is benign prostatic hyperplasia", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the stages of kidney disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is polycystic kidney disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes blood in urine hematuria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a urine culture test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are symptoms of a kidney infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a bladder infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "i was just diagnosed with asthma, what is it", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad has diabetes, what foods help people with diabetes", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my mom was told she has high cholesterol, how does that happen", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have anemia and want to know how its usually treated by doctors", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sister has lupus, what is lupus", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was told my thyroid is underactive, what does that mean generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my husband has atrial fibrillation, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been diagnosed with prediabetes, what is prediabetes", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend was prescribed metformin, what are the usual side effects of metformin", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my son has ADHD, can you explain what ADHD is", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have eczema and want to understand what causes flare ups generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my aunt got shingles, what is shingles", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was diagnosed with PCOS, what is PCOS", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad takes a statin, what are statins used for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told i have GERD, how does that condition work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandmother has Alzheimer's, what happens in the brain with Alzheimers", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been taking SSRIs and want to know how they are supposed to work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my brother was diagnosed with celiac, what is celiac disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have high blood pressure, what lifestyle changes help with hypertension generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child has asthma and i want to know how asthma is treated in general", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was recently diagnosed with hypothyroidism, what are the general symptoms", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my wife has rheumatoid arthritis, what causes RA", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have IBS and want to understand what generally triggers it", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my uncle had a TIA, what is a TIA", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have sleep apnea, how does sleep apnea affect health generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend was diagnosed with fibromyalgia, what is fibromyalgia", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been prescribed warfarin, how do blood thinners work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my nephew has type 1 diabetes, how is type 1 different from type 2", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a family member with COPD, what is COPD", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my daughter was prescribed albuterol, what does albuterol do", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i recently had anemia diagnosed, what are the types of anemia", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my mom takes levothyroxine, what is that medication for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told i have insulin resistance, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my father has Parkinson's, what are the stages of Parkinson's disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have gallstones, what causes gallstones in general", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend has a statin prescription, what side effects do statins commonly cause", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was told i might have sleep apnea, how is sleep apnea diagnosed", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my son was diagnosed with autism, what is autism spectrum disorder", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have endometriosis, what causes endometriosis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandpa has gout, what is gout and what causes attacks", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a friend on blood pressure medicine, how do ACE inhibitors work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my coworker has psoriasis, is psoriasis an autoimmune condition", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been prescribed prednisone, what does prednisone do", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my mom has osteoporosis, what are the risk factors for osteoporosis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i got a diagnosis of Crohn's disease, what is Crohn's disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my neighbor has kidney stones frequently, what causes recurring kidney stones", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have vertigo, what generally causes vertigo", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my uncle takes a beta blocker, what are beta blockers for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been prescribed omeprazole, how do PPIs work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my daughter gets migraines, what is the science behind migraines", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a coworker with epilepsy, what is epilepsy", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad was told he has fatty liver, what is fatty liver disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have high triglycerides, what does that mean for health generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend takes sertraline, what is sertraline used for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been getting headaches and wonder what causes tension headaches generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandma has macular degeneration, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was told i might have Hashimoto's, what is that disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sister has depression and takes fluoxetine, how does fluoxetine work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have sciatica, what is sciatica and what causes it", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend got Lyme disease from a tick, how does Lyme disease spread", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have plantar fasciitis, what causes plantar fasciitis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child has RSV, how does RSV affect children generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been taking ibuprofen for pain, how does ibuprofen reduce inflammation", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my mom got a pneumonia vaccine, what does the pneumonia vaccine do", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a friend who was diagnosed with leukemia, what is leukemia", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandfather had a heart stent put in, how does a cardiac stent work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a friend with MS, how does multiple sclerosis progress", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my son has a peanut allergy, how do severe allergies cause anaphylaxis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have hypothyroidism and take levothyroxine, why do thyroid doses sometimes need to be adjusted for people", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sister is pregnant and has gestational diabetes, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have polycystic kidney disease, what are the main complications of PKD", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my parent was diagnosed with stage 3 kidney disease, what are the stages of chronic kidney disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a family history of colon cancer and want to know how it is screened", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my aunt has Graves disease, what is that and how does it relate to the thyroid", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was prescribed doxycycline, what is doxycycline used for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend takes methotrexate for arthritis, how does methotrexate work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told i have high uric acid, what is uric acid and how does it cause gout", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad has BPH enlarged prostate, what are the general symptoms of BPH", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was prescribed a beta blocker for anxiety, how do beta blockers help anxiety symptoms", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sister has Sjogren's syndrome, what is Sjogren's", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was prescribed cetirizine for allergies, how do antihistamines work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend got diagnosed with DVT, what is deep vein thrombosis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i take amlodipine, what is amlodipine for and how does it work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my partner has tinnitus, what causes tinnitus", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was recently told i have borderline osteoporosis, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my mom is going through menopause, what happens physically during menopause", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have carpal tunnel, what is carpal tunnel syndrome", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child has eczema on their skin, what are general ways eczema is managed", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told my liver enzymes are elevated, what does that mean generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandpa has congestive heart failure, what is CHF", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have interstitial cystitis, what is that condition", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my brother has sickle cell disease, how does sickle cell affect the blood", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was diagnosed with restless leg syndrome, what causes restless leg syndrome", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my husband takes lisinopril, what does lisinopril treat", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told i have low ferritin, what is ferritin and why does it matter", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my aunt has polymyalgia rheumatica, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have trigeminal neuralgia, what is that condition", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my daughter has been diagnosed with precocious puberty, what causes that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was told i have high CRP levels, what does CRP measure", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my coworker has Raynaud's, what is Raynaud's disease", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was given a diagnosis of herniated disc, what is a herniated disc", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend has been having panic attacks, what happens physically during a panic attack", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a friend with schizophrenia, how is schizophrenia generally treated", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my father has peripheral neuropathy from diabetes, what is diabetic neuropathy", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have stomach problems and been prescribed amoxicillin for H pylori, how does H pylori cause ulcers", "intent": "info", "personal": 1, "injection": 0}
+{"text": "what r the symtoms of diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can u explain what asthma is", "intent": "info", "personal": 0, "injection": 0}
+{"text": "whats cholestrol and why is it bad", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does flu spread person to person", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what exaclty is high blood pressure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "symtoms of low iron in blood", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what happns to body during allergic reaction", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does liver clean the blood", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does pancreas do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is difrence between virus and bacteria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can you tell me what asthma triggers are", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does white blood cell count mean in blood test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what foods are bad for kidneys", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how body breaks down sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is immune system", "intent": "info", "personal": 0, "injection": 0}
+{"text": "does stress make blood pressure go up", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is normal heart rate", "intent": "info", "personal": 0, "injection": 0}
+{"text": "explain what cancer is", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what virus causes covid", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how flu vaccine is made every year", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how sleeping help body heal", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is blood oxygen level and what is normal", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does creatine do in muscles", "intent": "info", "personal": 0, "injection": 0}
+{"text": "difference between cold and allergy symptoms", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how kidneys filter blood", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a normal blood sugar fasting", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does body fight bacteria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are warning signs of high blood sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "does drinking water help kidneys", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes plaque in arteries", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how to know if someone is having a stroke", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does C reactive protein test show", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how exercise helps diabetes patients generally", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what vitamins are important for elderly people", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is normal creatinine level in blood", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the appendix and what does it do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is fever measured correctly", "intent": "info", "personal": 0, "injection": 0}
+{"text": "at what temperature is fever considered dangerous for adults", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sepsis and how does it start", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes low potassium in blood", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hyponatremia low sodium", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is magnesium deficiency symptoms", "intent": "info", "personal": 0, "injection": 0}
+{"text": "can lack of sleep cause weight gain", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are risk factors for breast cancer", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is prostate cancer different from BPH", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a genetic test for BRCA", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is preventive care and why is it important", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what health screenings does CDC recommend for adults", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does alcohol affect the liver", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a high platelet count mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is clotting cascade", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do doctors measure inflammation in body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is difference between type 1 and type 2 autoimmune", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how are genes passed down to children", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is genetic testing used for in medicine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are pharmacogenomics", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how drugs are absorbed by the body", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is bioavailability of a drug", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the blood brain barrier", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is placebo effect", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a clinical trial and how does it work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a randomized controlled trial", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does FDA approve a new drug", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is off-label drug use", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are drug interactions", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is polypharmacy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a generic drug vs brand name", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is bioequivalence for generic drugs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the liver do to medications first pass effect", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is drug half life", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between acute and chronic disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is comorbidity", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is differential diagnosis", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does remission mean in medicine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does palliative care mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hospice care", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is herd immunity threshold", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does endemic mean in public health", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between epidemic and pandemic", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is R0 reproduction number in disease spread", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do contact tracing programs work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is incubation period of a disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between sensitivity and specificity in tests", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a false positive in medical testing", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does a negative test result mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is point of care testing", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a rapid antigen test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is PCR test", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how accurate are home blood pressure monitors", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is white coat hypertension", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is ambulatory blood pressure monitoring", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how often should healthy adults get blood work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a comprehensive metabolic panel", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is thyroid stimulating hormone TSH normal range", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does it mean when T4 is low", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is free T3 vs total T3", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a thyroid ultrasound for", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a thyroid nodule", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a fine needle aspiration biopsy of thyroid", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does high ferritin mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hemoglobin A1c used to measure", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a continuous glucose monitor CGM", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does an insulin pump work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is basal insulin vs bolus insulin", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how do different types of insulin work at different speeds", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a diabetic ketoacidosis DKA", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is hyperosmolar hyperglycemic state", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what blood sugar is considered too low hypoglycemia threshold", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does glucagon work to raise blood sugar", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is dawn phenomenon in diabetes", "intent": "info", "personal": 0, "injection": 0}
+{"text": "my friend eats very little but still has high sugar, how does that happen in diabetes", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i noticed i have been urinating a lot, what medical conditions cause frequent urination", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i bruise easily, what causes easy bruising in general", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my hands get very cold and turn white, what causes Raynaud's symptoms", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i feel tired all the time, what medical conditions cause chronic fatigue", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my eyes are often dry, what causes chronic dry eyes", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been having joint pain and wondering what conditions cause joint inflammation", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend has a low white blood cell count, what causes low WBC generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have palpitations sometimes, what generally causes heart palpitations", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child has frequent ear infections, what causes recurring ear infections", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been getting frequent headaches, what are common causes of headaches", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my coworker was diagnosed with ankylosing spondylitis, what is that", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a history of kidney stones, what types of kidney stones exist", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my grandfather has prostate issues, how is BPH different from prostate cancer", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been taking antibiotics a lot, how does antibiotic resistance develop in general", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sibling has cystic fibrosis, what does cystic fibrosis do to the lungs", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have tinnitus, what causes ringing in ears", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad had a colonoscopy, what does a colonoscopy check for", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i was told my protein is high in urine, what does proteinuria indicate generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my parent has PTSD from military service, what is PTSD", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been experiencing hot flashes, what causes hot flashes in menopause", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend was prescribed lithium for bipolar, what does lithium do in the body", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been reading about BRCA gene, what is the BRCA gene mutation", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my uncle has chronic pancreatitis, what is chronic pancreatitis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told my sodium levels are low, what causes hyponatremia", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my friend is on dialysis, how does dialysis work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have recently been told my blood is thick, what conditions cause thick blood", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child was diagnosed with juvenile idiopathic arthritis, what is JIA", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been having night sweats, what medical conditions cause night sweats", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my dad recently had bypass surgery, what does bypass surgery do for the heart", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told I have borderline high cholesterol, what is considered high cholesterol", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my sister is starting chemotherapy, how does chemotherapy affect the body generally", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have a friend with sarcoidosis, what is sarcoidosis", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my child has been diagnosed with Type 1 diabetes, how does the immune system cause Type 1 diabetes", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been told my red blood cells are large, what does macrocytic anemia mean", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my doctor mentioned I have metabolic syndrome, what is metabolic syndrome", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have fibromyalgia and want to know what generally helps fibromyalgia symptoms", "intent": "info", "personal": 1, "injection": 0}
+{"text": "my partner has been diagnosed with sleep apnea, what health problems can untreated sleep apnea cause", "intent": "info", "personal": 1, "injection": 0}
+{"text": "i have been recently prescribed topiramate for migraines, how do migraine prevention drugs work", "intent": "info", "personal": 1, "injection": 0}
+{"text": "what is the difference between type 2 diabetes and LADA", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is MODY maturity onset diabetes of the young", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is blood pressure related to kidney disease", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is white matter disease in the brain", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is normal pressure hydrocephalus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cerebral palsy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does Down syndrome occur", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is spina bifida", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does folic acid prevent in pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is RhoGAM injection in pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is group B strep in pregnancy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does an Apgar score measure in newborns", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is jaundice in newborns", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is sudden infant death syndrome SIDS", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what vaccines do babies get in the first year", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is failure to thrive in infants", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the most common childhood vaccines and what do they prevent", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is chickenpox vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is MMR vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how does the polio vaccine work", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what diseases were eliminated by vaccines", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is diphtheria", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does the Tdap vaccine prevent", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is yellow fever vaccine", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what travel vaccines are typically recommended for tropical areas", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is malaria and how is it transmitted", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are antimalarial drugs", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is dengue fever", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is Zika virus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is cholera", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is typhoid fever", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is rabies prevention protocol", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is tetanus and how is it prevented", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are the signs of food poisoning", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what bacteria cause food poisoning", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is norovirus", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how long does food poisoning usually last", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is E coli and how does it spread", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is salmonella", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is MRSA and why is it resistant to antibiotics", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is C diff infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what causes hospital acquired infections", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an opportunistic infection", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what infections are common in immunocompromised people", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is PICC line and when is it used", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is IV therapy", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a central venous catheter", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what are vital signs and what is normal range", "intent": "info", "personal": 0, "injection": 0}
+{"text": "how is oxygen saturation measured", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a normal respiratory rate", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is capillary refill time", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is GCS Glasgow Coma Scale", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a Glasgow score of 15 mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a triage system in the ER", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does triage level 3 mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between urgent care and emergency room", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what conditions warrant going to the emergency room", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is primary care vs specialty care", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does an internist do", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the role of a hospitalist doctor", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is an intensivist", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is palliative vs curative care", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what does advance directive mean", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is a DNR order", "intent": "info", "personal": 0, "injection": 0}
+{"text": "what is the difference between living will and health care proxy", "intent": "info", "personal": 0, "injection": 0}
