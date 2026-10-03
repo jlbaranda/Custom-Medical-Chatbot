@@ -1,100 +1,116 @@
 # Guardrails
 
-Safety layer for the medical Q&A chatbot. Every request passes through six layers before and after the LLM. Policy (thresholds, models, templates) lives in [`policy.toml`](policy.toml), not in code.
+Safety layer around the chatbot: emergency detection, refusal of diagnosis / dosing / personal treatment advice, "no source, no answer", and cited-output checks.
 
-```
-question
-  │
-  0  PHI redaction ............ pii.py           names, phones, emails, MRNs, dates → [TYPE]
-  1  Emergency fast path ...... emergency.py     regex, recall-first → 911 / 988 / Poison Control first
-  2  Request classifier ....... classifier/      fine-tuned ModernBERT: intent + P(personal) + P(injection)
-  3  Graded policy ............ policy.py        answer / redirect / refuse per intent, tunable thresholds
-  4  Retrieval gate ........... retrieval.py     BM25 candidates → MedCPT cross-encoder; weak match = no answer
-     (LLM generates) .......... generation.py    Qwen via Ollama later; extractive stand-in for now
-  5  Output check ............. output_check.py  every sentence cited + grounded; numbers must be in source; no doses
-  6  Decision log ............. audit.py         which layer fired and why; never the question or answer text
-```
-
-## Usage
+## Setup
 
 ```powershell
-python -m pip install -r requirements.txt          # ~1 GB incl. CPU torch
-python -m guardrails.train --backend tfidf          # baseline classifier, seconds
-python -m guardrails.train --out models/guardrail-modernbert-v2   # fine-tuned (CPU: ~40 min, ~2.5 GB RAM; --low-memory --batch-size 8 for less)
-python scripts/ask.py --trace "how much tylenol can my 3 year old have"
-python -m guardrails.eval.run_eval                  # safety eval + threshold sweep → guardrails/eval/results/
-python -m guardrails.eval.experiments               # train + eval every variant, writes results/summary.md
-python -m guardrails.eval.calibrate_gate            # re-pick the retrieval gate threshold after corpus changes
+git pull
+python -m pip install -r requirements.txt     # one time, ~1 GB (CPU torch)
+python scripts/run_ingestion.py                # if data/chunks/chunks.jsonl is not built yet
 ```
 
-In code:
+The trained classifier (408 MB) downloads itself on first run. Nothing to train.
+
+## Try it
+
+```powershell
+python scripts/ask.py "what are the symptoms of anemia"
+python scripts/ask.py --trace "how much tylenol can my 3 year old have"    # shows which layer decided and why
+```
+
+## Use it in code
 
 ```python
 from guardrails import GuardedChatbot
 from guardrails.generation import OllamaGenerator
-bot = GuardedChatbot.from_config()                   # extractive stand-in generator
-bot = GuardedChatbot.from_config(generator=OllamaGenerator("qwen2.5:3b"))   # once Qwen is set up
+
+bot = GuardedChatbot.from_config()                                         # stand-in answer generator
+bot = GuardedChatbot.from_config(generator=OllamaGenerator("qwen2.5:3b"))  # real LLM via Ollama
 r = bot.ask("what are the symptoms of anemia")
-r.action, r.text, r.citations
+r.action      # answer | redirect | refuse | emergency | no_support
+r.text        # what to show the user
+r.citations   # sources used
 ```
 
-Swap points (all protocols, no subclassing needed): `RequestClassifier`, `Retriever` (e.g. the team's MedCPT/BiomedBERT embedding retriever), `Generator`. Without a trained transformer the pipeline falls back to the TF-IDF baseline with a warning.
+To plug in your own parts, pass them to `from_config`:
 
-## Actions
-
-| action | when | user sees |
+| part | what to pass | interface |
 |---|---|---|
-| `emergency` | layer 1 regex, or classifier P(emergency)+P(self_harm) ≥ 0.35 | emergency services first, nothing else |
-| `refuse` | risk ≥ intent's refuse threshold, or risky intent + jailbreak framing | why not + who to ask |
-| `redirect` | risk in the redirect band | decline the personal part + cited general info on the topic |
-| `answer` | risk below every redirect threshold | cited answer (+ 911 banner if the topic is an emergency) |
-| `no_support` | retrieval gate or output check leaves nothing | "not in my trusted sources" |
+| LLM | `generator=` | `.generate(question, passages) -> str`, each sentence ending in `[n]` |
+| retriever | `retriever=` | `.search(query, k) -> list[Passage]` |
 
-Risk is `P(intent) × (0.6 + 0.4 × P(personal))`, so "usual adult dose of X" scores lower than "how much X for my kid".
+## Change behaviour
 
-## Classifier
+Everything tunable is in [`policy.toml`](policy.toml): which classifier, refusal thresholds, retrieval gate threshold, log path. No code changes needed.
 
-Multi-head encoder (`classifier/transformer.py`): one backbone, three heads (6-way intent softmax, personal sigmoid, injection sigmoid), mean pooling, temperature-calibrated on validation so thresholds mean something. Backbone is a flag:
+| want | change |
+|---|---|
+| refuse more / less | `threshold_shift` (negative = stricter) |
+| different classifier | `[classifier] model_dir` (see models below) |
+| baseline or LLM-judge classifier | `[classifier] backend = "tfidf"` or `"llm_judge"` |
+| stricter "no source, no answer" | `min_rerank_score` |
+
+## Models
 
 ```powershell
-python -m guardrails.train --backbone answerdotai/ModernBERT-base                                  # default
-python -m guardrails.train --backbone microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext --out models/guardrail-biomedbert-v2
-python -m guardrails.train --backend tfidf                                                         # baseline
-python -m guardrails.train --exclude adversarial --out models/guardrail-modernbert-v1              # ablation: no adversarial data
+python -m guardrails.model_store          # the default model (also happens automatically)
+python -m guardrails.model_store --all    # all 5, for the comparison experiments
 ```
 
-Optional third backend, `llm_judge` in `policy.toml`: an LLM labels the request with the same schema. `transport = "ollama"` runs the team's local Qwen (no key, nothing leaves the machine); `"openrouter"` needs `OPENROUTER_API_KEY` and only ever receives PHI-redacted text. Unparseable judge output fails safe (treated as risky, so it is redirected).
+| model | role |
+|---|---|
+| `guardrail-biomedbert-v2` | default |
+| `guardrail-modernbert-v2`, `-v1` | comparison, and ablation without adversarial training data |
+| `guardrail-tfidf-v2.pkl`, `-v1.pkl` | baseline |
 
-Training data (`data/train_*.jsonl`, ~2.1k prompts) is synthetic, LLM-written once, labeled with intent / personal / injection, including hard negatives (personal context + general question) and jailbreak wrappers around harmless questions. The held-out red-team set (`eval/heldout.jsonl`, 615 prompts, 18 attack types) was written by separate generators that never saw the training files, and is excluded from training by exact match.
+Retrain instead of downloading (CPU, ~30 min each, ~2.5 GB RAM; add `--low-memory --batch-size 8` for less):
 
-## Eval (no LLM needed)
+```powershell
+python -m guardrails.train --backbone microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext --out models/guardrail-biomedbert-v2
+python -m guardrails.train --backend tfidf --out models/guardrail-tfidf-v2.pkl
+```
 
-`run_eval.py` reports on the held-out set:
+Publishing new models (maintainers): `python -m guardrails.model_store --pack <release download URL>`, upload `models/_release/*` to a new GitHub release, commit `models_manifest.json`.
+
+## Evaluate
+
+```powershell
+python -m pytest -q                              # unit tests
+python -m guardrails.eval.run_eval               # safety metrics + threshold sweep for the default model
+python -m guardrails.eval.experiments --eval-only   # all models -> guardrails/eval/results/summary.md
+python -m guardrails.eval.calibrate_gate         # re-pick the retrieval gate threshold after the corpus changes
+```
+
+Current results on the 615-prompt held-out red-team set: [`eval/results/summary.md`](eval/results/summary.md).
 
 - **under-refusal**: harmful prompt answered normally
-- **over-refusal**: info prompt redirected / refused
-- **emergency recall**: urgent prompts that got the emergency response
-- emergency-layer ablation (regex only / classifier only / both)
-- errors by attack type (roleplay, obfuscation, authority claim, ...)
-- threshold sweep → `results/<model>_sweep.csv`, the over- vs under-refusal tradeoff curve
+- **over-refusal**: info prompt redirected or refused
+- **emergency recall**: share of urgent prompts that got the emergency response
 
-`experiments.py` runs every variant (TF-IDF / ModernBERT / BiomedBERT, with and without adversarial training data) and writes `results/summary.md`.
+## How it works (short)
 
-Retrieval gate: `calibrate_gate.py` scores 80 labeled questions (in-corpus vs not) with the MedCPT cross-encoder and picks the threshold (currently 9.5, balanced accuracy 0.96). Raw BM25 scores were not usable as a gate: they let "how do I fix my car brakes" through and blocked "symptoms of anemia".
+```
+0  PHI redaction ........ pii.py           names, phones, emails, MRNs -> [TYPE]
+1  Emergency fast path .. emergency.py     regex, recall-first -> 911 / 988 / Poison Control
+2  Request classifier ... classifier/      intent + P(personal) + P(injection)
+3  Graded policy ........ policy.py        answer / redirect / refuse
+4  Retrieval gate ....... retrieval.py     BM25 -> MedCPT cross-encoder; weak match = no answer
+5  Output check ......... output_check.py  cited, grounded, numbers in source, no doses
+6  Decision log ......... audit.py         which layer fired and why, never the text
+```
 
-Answer-quality eval (faithfulness, RAGAS-style) is added once the real LLM is in.
+Training data (`data/train_*.jsonl`, ~2.1k prompts) and the held-out set (`eval/heldout.jsonl`) are synthetic and were written by separate generators; held-out prompts are excluded from training.
 
-## Hazard → control table (device-readiness)
+## Hazard -> control (device-readiness)
 
-Intended use is general health information, which keeps the product outside medical-device software by default. Each hazard has a control and a test (`tests/test_guardrails.py`, IDs `GR-xx`), so the same evidence supports an IEC 62304 / ISO 14971 file if the project ever moves into that scope.
+Intended use is general health information. Each hazard has a control and tests (`tests/test_guardrails.py`, IDs `GR-xx`).
 
-| ID | hazard | control | evidence |
-|---|---|---|---|
-| GR-01 | user in an emergency gets an information answer | layer 1 regex + classifier backup; emergency response replaces everything else | tests GR-01, eval emergency recall |
-| GR-02 | bot diagnoses, doses, or makes treatment decisions | layer 2-3 graded policy; layer 5 drops dose amounts and "you have X" claims | tests GR-02/04, eval under-refusal |
-| GR-03 | unsupported or hallucinated claims | layer 4 gate (cross-encoder threshold); layer 5 citation + grounding + number checks | tests GR-03/04 |
-| GR-04 | jailbreak / roleplay bypass | injection head escalates risky asks to refuse; normalization undoes obfuscation | eval by attack type |
-| GR-05 | PHI leakage into logs or third-party models | layer 0 redaction before any model; log stores no text | tests GR-05 |
-| GR-06 | over-refusal makes the tool useless and pushes users to worse sources | redirect action (still gives cited info); thresholds tuned on over-refusal | eval over-refusal, sweep |
-
-Each log line records `policy_version`, `policy_hash`, and the model names, so any decision can be traced back to the exact configuration that made it.
+| ID | hazard | control |
+|---|---|---|
+| GR-01 | emergency gets an information answer | layers 1-2, emergency response replaces everything |
+| GR-02 | bot diagnoses, doses, or decides treatment | layers 2-3, plus layer 5 dropping doses and "you have X" |
+| GR-03 | unsupported or hallucinated claims | layer 4 gate, layer 5 citation and number checks |
+| GR-04 | jailbreak / roleplay bypass | injection head escalates to refuse; text normalization |
+| GR-05 | PHI in logs or third-party models | layer 0 redaction; text-free log |
+| GR-06 | over-refusal makes the tool useless | redirect action; thresholds tuned on over-refusal |

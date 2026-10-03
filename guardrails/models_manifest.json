@@ -1,0 +1,30 @@
+{
+  "release_url": "https://github.com/jlbaranda/Custom-Medical-Chatbot/releases/download/guardrail-models-v1",
+  "models": {
+    "guardrail-biomedbert-v2": {
+      "asset": "guardrail-biomedbert-v2.zip",
+      "sha256": "35e9fe2ffe3bb0a8015f1886ce530752981322c6e5402beec31512f58f27bdc8",
+      "size": 407923152
+    },
+    "guardrail-modernbert-v1": {
+      "asset": "guardrail-modernbert-v1.zip",
+      "sha256": "d16fc4cdcc2d1fcf60a0d58f9b85f37e8536168a3fd40916113493c5cadb375f",
+      "size": 555952267
+    },
+    "guardrail-modernbert-v2": {
+      "asset": "guardrail-modernbert-v2.zip",
+      "sha256": "ce7d6ce98f0c1c1615e6afae6bd4952cb4ceca65b4809f83968c767cddf647a9",
+      "size": 555959502
+    },
+    "guardrail-tfidf-v1.pkl": {
+      "asset": "guardrail-tfidf-v1.pkl",
+      "sha256": "4609c92e94d1f472c47b92e1c07924573ce6bfe02d57d6f5e204b4ced165363c",
+      "size": 2391990
+    },
+    "guardrail-tfidf-v2.pkl": {
+      "asset": "guardrail-tfidf-v2.pkl",
+      "sha256": "2f16027ca96455709e833fd764ac4f73294bf0c274b76bbe14701bb8f3bdb0bb",
+      "size": 2924125
+    }
+  }
+}

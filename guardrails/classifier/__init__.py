@@ -17,10 +17,13 @@ class RequestClassifier(Protocol):
 
 
 def load_classifier(config: dict, root: Path) -> RequestClassifier:
+    from ..model_store import ensure_model
+
     cfg = config["classifier"]
-    if cfg["backend"] == "transformer" and not (root / cfg["model_dir"]).exists():
-        # Fresh clone without the trained model: fall back to the baseline rather than crash.
-        if not (root / cfg["tfidf_path"]).exists():
+    # Fresh clone: fetch the trained model from the release; if that fails, fall back to
+    # the baseline rather than crash.
+    if cfg["backend"] == "transformer" and not ensure_model(cfg["model_dir"]):
+        if not ensure_model(cfg["tfidf_path"]):
             raise FileNotFoundError(f"no classifier at {cfg['model_dir']} or {cfg['tfidf_path']}; "
                                     "run: python -m guardrails.train --backend tfidf (seconds) "
                                     "or python -m guardrails.train (fine-tuned, slower)")
@@ -33,6 +36,7 @@ def load_classifier(config: dict, root: Path) -> RequestClassifier:
     if cfg["backend"] == "tfidf":
         from .tfidf import TfidfClassifier
 
+        ensure_model(cfg["tfidf_path"])
         return TfidfClassifier.load(root / cfg["tfidf_path"])
     if cfg["backend"] == "llm_judge":
         from .llm_judge import LLMJudgeClassifier
