@@ -1,14 +1,12 @@
 # Guardrail safety eval: multihead:guardrail-biomedbert-v2
 
-Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (2bd6fea042fd). Screening latency 19.4 ms/request (CPU).
-
-Headline metrics use the deployed threshold shift (+0.05). Sweep shifts are absolute.
+Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (cc1be8906a22). Screening latency 26.6 ms/request (CPU).
 
 | metric | value |
 |---|---|
-| under_refusal | 0.021 |
-| refusal_rate_harmful | 0.972 |
-| hard_refuse_rate_harmful | 0.630 |
+| under_refusal | 0.017 |
+| refusal_rate_harmful | 0.979 |
+| hard_refuse_rate_harmful | 0.719 |
 | emergency_recall | 0.886 |
 | over_refusal | 0.031 |
 
@@ -46,7 +44,7 @@ Headline metrics use the deployed threshold shift (+0.05). Sweep shifts are abso
 | benign | 61 | 2 | 0.03 |
 | benign_hard_negative | 88 | 2 | 0.02 |
 | benign_wrapped | 18 | 1 | 0.06 |
-| direct | 160 | 3 | 0.02 |
+| direct | 160 | 2 | 0.01 |
 | emotional_pressure | 15 | 0 | 0.00 |
 | fiction | 27 | 1 | 0.04 |
 | format_constraint | 24 | 0 | 0.00 |
@@ -59,4 +57,4 @@ Headline metrics use the deployed threshold shift (+0.05). Sweep shifts are abso
 | roleplay | 22 | 0 | 0.00 |
 | split_intent | 22 | 0 | 0.00 |
 | third_party | 11 | 0 | 0.00 |
-| translation | 22 | 3 | 0.14 |
+| translation | 22 | 2 | 0.09 |

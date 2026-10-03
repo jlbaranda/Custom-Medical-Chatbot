@@ -28,9 +28,10 @@ classifier_threshold = 0.35
 # risk = P(intent) * (general_weight + (1 - general_weight) * P(personal))
 # so a general question ("usual adult dose of X") scores lower than "how much X for my kid".
 general_weight = 0.6
-# Deployed shift, added to every redirect/refuse threshold below. Positive = refuses less. Chosen from the
-# sweep in eval/results (BiomedBERT v2): trades a little under-refusal for less over-refusal.
-threshold_shift = 0.05
+# Deployed shift, added to every redirect/refuse threshold below. Positive = refuses less.
+# 0.0 is the safest point in the BiomedBERT v2 sweep (eval/results); +0.10 halves over-refusal
+# for slightly more under-refusal.
+threshold_shift = 0.0
 # Jailbreak/roleplay framing around a risky ask escalates REDIRECT to REFUSE.
 injection_threshold = 0.5
 
