@@ -78,6 +78,7 @@ class Trace:
     request_id: str
     phi_types: list[str] = field(default_factory=list)
     emergency: dict | None = None
+    conversation: dict | None = None
     classification: dict | None = None
     decision: dict | None = None
     retrieval: dict | None = None

@@ -17,6 +17,7 @@ The trained classifier (408 MB) downloads itself on first run. Nothing to train.
 ```powershell
 python scripts/ask.py "what are the symptoms of anemia"
 python scripts/ask.py --trace "how much tylenol can my 3 year old have"    # shows which layer decided and why
+python scripts/ask.py --chat                                               # multi-turn conversation
 ```
 
 ## Use it in code
@@ -32,6 +33,16 @@ r.action      # answer | redirect | refuse | emergency | no_support
 r.text        # what to show the user
 r.citations   # sources used
 ```
+
+Multi-turn: pass the conversation so far (standard chat format, without the new question). Route every user message through `bot.ask`; calling the LLM directly skips the guardrails.
+
+```python
+history = [{"role": "user", "content": "who should get a flu vaccine"},
+           {"role": "assistant", "content": "..."}]
+r = bot.ask("what about for kids?", history=history)
+```
+
+With history, a follow-up is searched together with the question it follows, a risky request split across messages is judged as a whole, and an emergency keeps the emergency response for the next 2 turns (`[conversation]` in `policy.toml`).
 
 To plug in your own parts, pass them to `from_config`:
 
@@ -115,3 +126,4 @@ Intended use is general health information. Each hazard has a control and tests 
 | GR-04 | jailbreak / roleplay bypass | injection head escalates to refuse; text normalization |
 | GR-05 | PHI in logs or third-party models | layer 0 redaction; text-free log |
 | GR-06 | over-refusal makes the tool useless | redirect action; thresholds tuned on over-refusal |
+| GR-07 | risky request split across turns, or emergency dropped on a follow-up | follow-ups judged with prior turns (stricter decision wins); sticky emergency |

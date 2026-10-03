@@ -7,6 +7,7 @@ from pathlib import Path
 from . import responses
 from .audit import DecisionLog
 from .classifier import RequestClassifier, load_classifier
+from .conversation import is_follow_up, user_turns
 from .emergency import detect_emergency, emergency_response
 from .generation import ExtractiveGenerator, Generator
 from .normalize import normalize
@@ -17,6 +18,7 @@ from .retrieval import BM25Retriever, CrossEncoderReranker, Retriever, retrieval
 from .types import Action, Decision, GuardedResponse, Intent, Trace
 
 ROOT = Path(__file__).resolve().parents[1]
+_STRICTNESS = {Action.ANSWER: 0, Action.NO_SUPPORT: 0, Action.REDIRECT: 1, Action.REFUSE: 2, Action.EMERGENCY: 3}
 
 
 class GuardedChatbot:
@@ -55,34 +57,70 @@ class GuardedChatbot:
         log = DecisionLog(ROOT / cfg["log"]["path"], versions, cfg["log"]["enabled"])
         return cls(classifier, retriever or BM25Retriever.from_jsonl(), generator, policy, log, reranker)
 
-    # Layers 0-3 only: no retrieval or generation. Used by the safety eval.
-    def screen(self, question: str, trace: Trace | None = None) -> tuple[Decision, str]:
+    # Layers 0-3 only: no retrieval or generation. Returns the decision and the
+    # (redacted) query to retrieve and answer with.
+    def screen(self, question: str, trace: Trace | None = None,
+               history: list[dict] | None = None) -> tuple[Decision, str]:
         trace = trace or Trace(uuid.uuid4().hex)
         t0 = time.perf_counter()
         red = redact(question)
         trace.phi_types = list(red.found)
         text = red.text
+        conv = self.policy.config.get("conversation", {})
+        prior = [redact(t).text for t in user_turns(history)][-conv.get("history_turns", 3):]
+        follow_up = bool(prior) and is_follow_up(normalize(text))
+        trace.conversation = {"prior_user_turns": len(prior), "follow_up": follow_up, "context_decided": False}
 
-        em = detect_emergency(normalize(text))
-        trace.emergency = {"tier": em.tier, "kind": em.kind, "score": em.score}
-        if em.tier == "active":
-            kind = Intent.SELF_HARM if em.kind == "self_harm" else Intent.EMERGENCY
-            decision = Decision(Action.EMERGENCY, "emergency", kind, em.score, em.reason)
-            trace.decision = _decision_dict(decision)
-            trace.latency_ms["screen"] = _ms(t0)
-            return decision, text
-
-        c = self.classifier.classify(text)
-        trace.classification = c.to_dict()
-        decision = self.policy.decide(c)
+        decision = self._screen_text(text, trace)
+        if decision.action is not Action.EMERGENCY and prior:
+            decision = self._apply_history(decision, text, prior, follow_up, conv, trace)
         trace.decision = _decision_dict(decision)
         trace.latency_ms["screen"] = _ms(t0)
-        return decision, text
+        # A follow-up ("what about for kids?") is searched together with the question it follows.
+        query = f"{prior[-1]} {text}" if follow_up else text
+        return decision, query
 
-    def ask(self, question: str) -> GuardedResponse:
+    def _screen_text(self, text: str, trace: Trace | None = None) -> Decision:
+        em = detect_emergency(normalize(text))
+        if trace is not None:
+            trace.emergency = {"tier": em.tier, "kind": em.kind, "score": em.score}
+        if em.tier == "active":
+            kind = Intent.SELF_HARM if em.kind == "self_harm" else Intent.EMERGENCY
+            return Decision(Action.EMERGENCY, "emergency", kind, em.score, em.reason)
+        c = self.classifier.classify(text)
+        if trace is not None:
+            trace.classification = c.to_dict()
+        return self.policy.decide(c)
+
+    def _apply_history(self, decision: Decision, text: str, prior: list[str], follow_up: bool, conv: dict,
+                       trace: Trace) -> Decision:
+        # An emergency earlier in the conversation stays in force for the next few turns.
+        for turn in prior[len(prior) - conv.get("sticky_emergency_turns", 2):]:
+            earlier = self._screen_text(turn)
+            if earlier.action is Action.EMERGENCY:
+                kind = "self_harm" if earlier.intent is Intent.SELF_HARM else detect_emergency(normalize(turn)).kind
+                trace.emergency = {"tier": "active", "kind": kind, "score": earlier.risk, "sticky": True}
+                trace.conversation["context_decided"] = True
+                return Decision(Action.EMERGENCY, "conversation", earlier.intent, earlier.risk,
+                                "emergency earlier in conversation")
+        # A follow-up is also judged together with the turns before it, and the stricter
+        # decision wins, so a risky request cannot be split across messages.
+        if follow_up:
+            c = self.classifier.classify(" ".join([*prior, text]))
+            joined = self.policy.decide(c)
+            if _STRICTNESS[joined.action] > _STRICTNESS[decision.action]:
+                trace.classification = c.to_dict()
+                trace.conversation["context_decided"] = True
+                return Decision(joined.action, "conversation", joined.intent, joined.risk,
+                                "with conversation context: " + joined.reason)
+        return decision
+
+    def ask(self, question: str, history: list[dict] | None = None) -> GuardedResponse:
+        """`history` is the conversation so far in chat format
+        ([{"role": "user" | "assistant", "content": ...}, ...]), without the new question."""
         trace = Trace(uuid.uuid4().hex)
-        decision, text = self.screen(question, trace)
-        response = self._respond(decision, text, trace)
+        decision, query = self.screen(question, trace, history)
+        response = self._respond(decision, query, trace)
         if self.log:
             self.log.write(trace)
         return response

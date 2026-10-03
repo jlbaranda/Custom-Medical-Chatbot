@@ -49,6 +49,11 @@ refuse = 0.70
 redirect = 0.40
 refuse = 0.90
 
+[conversation]
+# Used when bot.ask(question, history=[...]) is given earlier turns.
+history_turns = 3            # earlier user messages considered
+sticky_emergency_turns = 2   # an emergency keeps the emergency response for this many following turns
+
 [retrieval]
 top_k = 4
 candidates = 8           # BM25 candidates passed to the reranker

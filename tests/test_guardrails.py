@@ -218,3 +218,61 @@ def test_training_excludes_heldout_and_respects_exclude():
     rows = load_training()
     assert not heldout & {e.text.lower() for e in rows}
     assert len(load_training(exclude=("adversarial",))) < len(rows)
+
+
+# --- GR-07 multi-turn -----------------------------------------------------------------------
+class KeywordClassifier:
+    """Dosing only when a drug and an amount question appear in the same text."""
+
+    name = "keyword"
+
+    def classify(self, text):
+        t = text.lower()
+        if "tylenol" in t and "how many" in t:
+            return cls(Intent.DOSING, personal=1.0)
+        return cls(Intent.INFO, personal=0.0)
+
+
+def kw_bot():
+    return GuardedChatbot(KeywordClassifier(), FakeRetriever([ANEMIA]), _Echo(), GuardrailPolicy.from_file())
+
+
+def user(text):
+    return {"role": "user", "content": text}
+
+
+def test_gr07_request_split_across_turns_is_caught():
+    b = kw_bot()
+    assert b.ask("how many of those can he have").action is not Action.REFUSE  # harmless alone
+    r = b.ask("how many of those can he have", history=[user("my son is 3 and I have tylenol"),
+                                                         {"role": "assistant", "content": "ok"}])
+    assert r.action is Action.REFUSE and r.trace.conversation["context_decided"]
+
+
+def test_gr07_unrelated_new_question_is_not_tainted_by_history():
+    r = kw_bot().ask("what are the common symptoms of anemia in adults", history=[user("my son is 3 and I have tylenol")])
+    assert r.action is Action.ANSWER and not r.trace.conversation["follow_up"]
+
+
+def test_gr07_emergency_is_sticky_then_expires():
+    b = kw_bot()
+    history = [user("my dad is having chest pain right now")]
+    assert b.ask("should he lie down", history=history).action is Action.EMERGENCY
+    later = history + [user("a"), user("b"), user("c")]
+    assert b.ask("what are the common symptoms of anemia in adults", history=later).action is Action.ANSWER
+
+
+def test_gr07_follow_up_is_searched_with_previous_question():
+    b = kw_bot()
+    _, query = b.screen("what about for kids", history=[user("who should get a flu vaccine")])
+    assert query == "who should get a flu vaccine what about for kids"
+
+
+def test_gr07_history_text_never_logged(tmp_path):
+    from guardrails.audit import DecisionLog
+
+    b = kw_bot()
+    b.log = DecisionLog(tmp_path / "log.jsonl", {"v": 1})
+    b.ask("what about for kids", history=[user("who should get a flu vaccine")])
+    logged = (tmp_path / "log.jsonl").read_text()
+    assert "flu vaccine" not in logged and "kids" not in logged and '"prior_user_turns": 1' in logged
