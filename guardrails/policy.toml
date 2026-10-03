@@ -67,6 +67,10 @@ min_coverage = 0.5       # fraction of query content words found in the top pass
 min_coverage_redirect = 0.3
 
 [output]
+# Citation filter: drop any sentence that does not end with a valid [n] source marker.
+# Set to false if the LLM does not cite reliably: sentences are then kept without a marker,
+# but still checked against the retrieved passages (grounding, numbers, doses, personal claims).
+require_citations = true
 # Fraction of a sentence's content words that must appear in the passage it cites.
 min_support = 0.5
 # Drop sentences containing dose-like quantities (mg, units, tablets...) in these actions.

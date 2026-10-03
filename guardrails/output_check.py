@@ -52,6 +52,7 @@ def check_output(answer: str, passages: list[Passage], config: dict, action: str
         return result
     block_doses = action in config["output"]["block_doses_in"]
     min_support = config["output"]["min_support"]
+    require_citations = config["output"].get("require_citations", True)
 
     for sentence in split_sentences(answer.replace("\n", " ")):
         cites = [int(n) for n in _CITE.findall(sentence)]
@@ -59,10 +60,12 @@ def check_output(answer: str, passages: list[Passage], config: dict, action: str
         if not content_tokens(bare):
             continue
         valid = [n for n in cites if 1 <= n <= len(passages)]
-        if not valid:
+        if not valid and require_citations:
             result.drop("uncited" if not cites else "bad_citation")
             continue
-        source_text = " ".join(passages[n - 1].text for n in valid)
+        # With the citation filter off, an uncited sentence is checked against every
+        # retrieved passage instead of the one it names.
+        source_text = " ".join(passages[n - 1].text for n in valid or range(1, len(passages) + 1))
         source_tokens = set(content_tokens(source_text))
         words = content_tokens(bare)
         support = sum(w in source_tokens for w in words) / len(words)
@@ -88,13 +91,15 @@ def render(check: OutputCheck, passages: list[Passage]) -> tuple[str, list[Passa
     remap: dict[int, int] = {}
     sources: list[Passage] = []
     url_number: dict[str, int] = {}
-    for n in check.cited_ids:
+    # Uncited sentences (citation filter off) are backed by all passages, listed after the cited ones.
+    uncited = any(not ns for _, ns in check.kept)
+    for n in check.cited_ids + (list(range(1, len(passages) + 1)) if uncited else []):
         url = passages[n - 1].source_url or passages[n - 1].chunk_id
         if url not in url_number:
             sources.append(passages[n - 1])
             url_number[url] = len(sources)
         remap[n] = url_number[url]
     body = " ".join(
-        s.rstrip() + " " + "".join(f"[{k}]" for k in sorted({remap[n] for n in ns})) for s, ns in check.kept
+        (s.rstrip() + " " + "".join(f"[{k}]" for k in sorted({remap[n] for n in ns}))).rstrip() for s, ns in check.kept
     )
     return body.strip(), sources

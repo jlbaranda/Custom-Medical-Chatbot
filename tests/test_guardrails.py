@@ -127,6 +127,17 @@ def test_gr04_uncited_sentence_dropped():
     assert len(out.kept) == 1 and out.dropped == {"uncited": 1}
 
 
+def test_gr04_citation_filter_can_be_disabled_without_disabling_grounding():
+    from guardrails.output_check import render
+
+    cfg = {**CONFIG, "output": {**CONFIG["output"], "require_citations": False}}
+    out = check_output("Common symptoms of anemia include fatigue. Anemia is cured by eating 12 carrots daily.",
+                       [ANEMIA], cfg, "answer")
+    assert len(out.kept) == 1 and out.dropped  # uncited kept, ungrounded still dropped
+    text, sources = render(out, [ANEMIA])
+    assert "[" not in text and sources == [ANEMIA]
+
+
 def test_gr04_number_not_in_source_dropped():
     out = check_output("Anemia affects 40 percent of healthy red blood cells. [1]", [ANEMIA], CONFIG, "answer")
     assert out.dropped.get("number_not_in_source") == 1

@@ -50,6 +50,7 @@ Everything tunable is in [`policy.toml`](policy.toml): which classifier, refusal
 | different classifier | `[classifier] model_dir` (see models below) |
 | baseline or LLM-judge classifier | `[classifier] backend = "tfidf"` or `"llm_judge"` |
 | stricter "no source, no answer" | `min_rerank_score` |
+| LLM does not write `[n]` citations reliably (answers come back as "not in my trusted sources") | `[output] require_citations = false` |
 
 ## Models
 
