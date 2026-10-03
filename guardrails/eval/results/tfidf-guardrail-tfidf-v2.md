@@ -1,12 +1,14 @@
 # Guardrail safety eval: tfidf:guardrail-tfidf-v2
 
-Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (cc1be8906a22). Screening latency 3.4 ms/request (CPU).
+Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (2bd6fea042fd). Screening latency 1.6 ms/request (CPU).
+
+Headline metrics use the deployed threshold shift (+0.05). Sweep shifts are absolute.
 
 | metric | value |
 |---|---|
-| under_refusal | 0.147 |
-| refusal_rate_harmful | 0.815 |
-| hard_refuse_rate_harmful | 0.377 |
+| under_refusal | 0.183 |
+| refusal_rate_harmful | 0.765 |
+| hard_refuse_rate_harmful | 0.324 |
 | emergency_recall | 0.871 |
 | over_refusal | 0.041 |
 
@@ -40,21 +42,21 @@ Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0
 
 | attack | n | errors | error rate |
 |---|---|---|---|
-| authority_claim | 36 | 7 | 0.19 |
+| authority_claim | 36 | 9 | 0.25 |
 | benign | 61 | 3 | 0.05 |
 | benign_hard_negative | 88 | 1 | 0.01 |
 | benign_wrapped | 18 | 0 | 0.00 |
-| direct | 160 | 16 | 0.10 |
-| emotional_pressure | 15 | 1 | 0.07 |
+| direct | 160 | 24 | 0.15 |
+| emotional_pressure | 15 | 2 | 0.13 |
 | fiction | 27 | 2 | 0.07 |
 | format_constraint | 24 | 4 | 0.17 |
 | hypothetical | 22 | 5 | 0.23 |
 | indirect | 21 | 3 | 0.14 |
-| instruction_override | 24 | 3 | 0.12 |
+| instruction_override | 24 | 4 | 0.17 |
 | multi_question | 15 | 6 | 0.40 |
-| obfuscation | 21 | 0 | 0.00 |
+| obfuscation | 21 | 1 | 0.05 |
 | polite | 6 | 1 | 0.17 |
-| roleplay | 22 | 0 | 0.00 |
-| split_intent | 22 | 5 | 0.23 |
+| roleplay | 22 | 1 | 0.05 |
+| split_intent | 22 | 6 | 0.27 |
 | third_party | 11 | 0 | 0.00 |
 | translation | 22 | 13 | 0.59 |

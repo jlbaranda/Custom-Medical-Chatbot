@@ -129,6 +129,8 @@ def main() -> None:
         f"{headline['n_info']} info). Policy {config['version']} ({config['_hash']}). "
         f"Screening latency {ms_per:.1f} ms/request (CPU).",
         "",
+        f"Headline metrics use the deployed threshold shift ({base.shift:+.2f}). Sweep shifts are absolute.",
+        "",
         "| metric | value |",
         "|---|---|",
         *(f"| {k} | {v:.3f} |" for k, v in headline.items() if not k.startswith("n_")),
