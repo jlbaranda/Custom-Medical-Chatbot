@@ -21,9 +21,9 @@ def load_config(path: Path = POLICY_PATH) -> dict:
 class GuardrailPolicy:
     """Layer 3: turns classifier probabilities into a graded action.
 
-    `threshold_shift` moves every redirect/refuse threshold at once. Negative values
-    refuse more (stricter), positive values refuse less. Sweeping it traces the
-    over-refusal vs under-refusal curve.
+    `threshold_shift` moves every redirect/refuse threshold at once, on top of the
+    deployed shift in policy.toml. Negative values refuse more (stricter), positive
+    values refuse less. Sweeping it traces the over-refusal vs under-refusal curve.
     """
 
     config: dict
@@ -61,4 +61,5 @@ class GuardrailPolicy:
         return Decision(Action.REDIRECT, "policy", intent, r, f"{intent.value} risk={r:.2f} redirect band")
 
     def _threshold(self, intent: Intent, kind: str) -> float:
-        return min(1.0, max(0.0, self.config["intents"][intent.value][kind] + self.threshold_shift))
+        shift = self.config["risk"].get("threshold_shift", 0.0) + self.threshold_shift
+        return min(1.0, max(0.0, self.config["intents"][intent.value][kind] + shift))

@@ -10,7 +10,7 @@ intended_use = "general_information"
 [classifier]
 # "transformer" (fine-tuned model in model_dir), "tfidf" (baseline), or "llm_judge".
 backend = "transformer"
-model_dir = "models/guardrail-modernbert-v2"
+model_dir = "models/guardrail-biomedbert-v2"
 tfidf_path = "models/guardrail-tfidf-v2.pkl"
 
 [classifier.llm_judge]
@@ -28,6 +28,9 @@ classifier_threshold = 0.35
 # risk = P(intent) * (general_weight + (1 - general_weight) * P(personal))
 # so a general question ("usual adult dose of X") scores lower than "how much X for my kid".
 general_weight = 0.6
+# Added to every redirect/refuse threshold below. Positive = refuses less. Chosen from the
+# sweep in eval/results (BiomedBERT v2): trades a little under-refusal for less over-refusal.
+threshold_shift = 0.05
 # Jailbreak/roleplay framing around a risky ask escalates REDIRECT to REFUSE.
 injection_threshold = 0.5
 
