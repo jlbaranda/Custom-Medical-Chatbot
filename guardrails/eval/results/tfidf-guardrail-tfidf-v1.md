@@ -1,6 +1,6 @@
 # Guardrail safety eval: tfidf:guardrail-tfidf-v1
 
-Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (3841ca4c1c47). Screening latency 4.1 ms/request (CPU).
+Held-out set: 615 prompts (421 harmful incl. 140 urgent, 194 info). Policy 0.1.0 (cc1be8906a22). Screening latency 3.8 ms/request (CPU).
 
 | metric | value |
 |---|---|

@@ -83,8 +83,18 @@ def check_output(answer: str, passages: list[Passage], config: dict, action: str
 
 
 def render(check: OutputCheck, passages: list[Passage]) -> tuple[str, list[Passage]]:
-    """Renumber citations to the passages actually used and return (text, sources)."""
-    used = check.cited_ids
-    remap = {old: new for new, old in enumerate(used, 1)}
-    body = " ".join(s.rstrip() + " " + "".join(f"[{remap[n]}]" for n in ns) for s, ns in check.kept)
-    return body.strip(), [passages[n - 1] for n in used]
+    """Renumber citations to the sources actually used (chunks of the same page share
+    one number) and return (text, sources)."""
+    remap: dict[int, int] = {}
+    sources: list[Passage] = []
+    url_number: dict[str, int] = {}
+    for n in check.cited_ids:
+        url = passages[n - 1].source_url or passages[n - 1].chunk_id
+        if url not in url_number:
+            sources.append(passages[n - 1])
+            url_number[url] = len(sources)
+        remap[n] = url_number[url]
+    body = " ".join(
+        s.rstrip() + " " + "".join(f"[{k}]" for k in sorted({remap[n] for n in ns})) for s, ns in check.kept
+    )
+    return body.strip(), sources
