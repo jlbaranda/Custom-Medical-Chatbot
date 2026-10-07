@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import html as html_lib
+
 from bs4 import BeautifulSoup, Tag
 
 from .text_cleaner import clean_text
@@ -237,6 +239,26 @@ def _prune_trailing_metadata(blocks: list[str]) -> list[str]:
             return blocks[:start]
     return blocks
 
+def extract_html_fragment_text(fragment: str) -> str:
+    """Convert an HTML fragment into clean plain text.
+
+    MedlinePlus full-summary fields may contain either real HTML elements
+    or entity-escaped HTML such as &lt;p&gt;...&lt;/p&gt;.
+
+    This converts both forms to the same clean text representation used
+    for downloaded HTML articles while preserving paragraph boundaries
+    and keeping inline link text inside its sentence.
+    """
+    if not fragment:
+        return ""
+
+    # Handle summaries where the XML contains escaped HTML.
+    fragment = html_lib.unescape(fragment)
+
+    soup = BeautifulSoup(fragment, "lxml")
+    _remove_page_furniture(soup)
+
+    return _container_text(soup.body or soup)
 
 def _container_text(container: Tag | BeautifulSoup) -> str:
     blocks = _extract_blocks(container)

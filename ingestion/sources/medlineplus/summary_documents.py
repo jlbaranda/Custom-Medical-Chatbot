@@ -5,8 +5,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from ingestion.cleaners.text_cleaner import clean_text
-
+from ingestion.cleaners.html_cleaner import extract_html_fragment_text
 
 def _summary_document_id(topic_url: str, title: str) -> str:
     key = topic_url or title
@@ -16,7 +15,14 @@ def _summary_document_id(topic_url: str, title: str) -> str:
 
 def build_summary_document(topic_record: dict) -> dict | None:
     summary = topic_record.get("medlineplus_summary", {})
-    text = clean_text(summary.get("text", ""))
+
+    raw_summary = (
+        summary.get("html")
+        or summary.get("text", "")
+    )
+
+    text = extract_html_fragment_text(raw_summary)
+
     if not text:
         return None
 
