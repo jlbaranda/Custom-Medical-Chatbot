@@ -260,6 +260,10 @@ Failures and skipped sources are recorded in:
 ```text
 data/logs/source_downloads.jsonl
 ```
+## Asking Question
+
+after creating a virtual environment run this, replacing hello with your question.
+python scripts/test_qwen_rag.py --question "hello"
 
 ## Guardrails
 
