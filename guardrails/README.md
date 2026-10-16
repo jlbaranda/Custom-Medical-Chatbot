@@ -18,6 +18,7 @@ The trained classifier (408 MB) downloads itself on first run. Nothing to train.
 python scripts/ask.py "what are the symptoms of anemia"
 python scripts/ask.py --trace "how much tylenol can my 3 year old have"    # shows which layer decided and why
 python scripts/ask.py --chat                                               # multi-turn conversation
+python scripts/ask.py --debug "I'm not able to breathe, what should I do"   # why it answered / refused
 ```
 
 ## Use it in code
@@ -32,7 +33,11 @@ r = bot.ask("what are the symptoms of anemia")
 r.action      # answer | redirect | refuse | emergency | no_support
 r.text        # what to show the user
 r.citations   # sources used
+r.debug       # which guardrail fired, before or after the LLM, probabilities vs thresholds,
+              # and the blocked LLM draft with the reason each sentence was dropped
 ```
+
+`r.debug` is in memory only; the decision log never stores question or answer text.
 
 Multi-turn: pass the conversation so far (standard chat format, without the new question). Route every user message through `bot.ask`; calling the LLM directly skips the guardrails.
 

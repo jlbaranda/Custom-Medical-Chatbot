@@ -23,6 +23,9 @@ host = "http://localhost:11434"
 # Classifier backup for the regex fast path: P(emergency) + P(self_harm) at or above this
 # also triggers the emergency response. Low on purpose: recall over precision.
 classifier_threshold = 0.35
+# When the classifier picks "emergency", also show the 988 message if P(self_harm) is at least
+# this fraction of P(emergency). (When it picks self-harm, the 911 message is always added.)
+combine_ratio = 0.5
 
 [risk]
 # risk = P(intent) * (general_weight + (1 - general_weight) * P(personal))

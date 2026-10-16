@@ -95,23 +95,31 @@ EMERGENCY_HEADER = (
     "**If you or someone else may be having a medical emergency, call 911 (or your local emergency number) now.**"
 )
 _KIND_LINES = {
-    "self_harm": (
-        "You can call or text **988** (Suicide & Crisis Lifeline, US) any time to talk with someone right now. "
-        "If you are in immediate danger, call 911."
-    ),
     "overdose": "For a possible poisoning or overdose, call **Poison Control at 1-800-222-1222** (US) if the person is awake and breathing; call 911 if not.",
     "anaphylaxis": "If an epinephrine auto-injector has been prescribed, use it as directed and call 911.",
     "stroke": "Note the time symptoms started; emergency teams need it.",
     "cardiac": "Do not drive yourself to the hospital; call 911 so treatment can start on the way.",
 }
+_SELF_HARM_INTRO = "I'm really sorry you're dealing with this."
+_SELF_HARM_988 = "You can call or text **988** (Suicide & Crisis Lifeline, US) any time to talk with someone right now."
 
 
-def emergency_response(result: EmergencyResult) -> str:
-    if result.kind == "self_harm":
-        return "I'm really sorry you're dealing with this. " + _KIND_LINES["self_harm"] + \
-            "\n\nI can't help with this question, but people at 988 can, right now."
-    lines = [EMERGENCY_HEADER]
-    if result.kind in _KIND_LINES:
-        lines.append(_KIND_LINES[result.kind])
-    lines.append("This assistant cannot assess emergencies. Please contact emergency services before anything else.")
-    return "\n\n".join(lines)
+def emergency_response(kinds: list[str], symptom: str | None = None) -> str:
+    """Build the emergency message for one or more kinds ("emergency", "self_harm"),
+    in the given order. Stacked messages share one closing line, so nothing repeats."""
+    parts: list[str] = []
+    for kind in kinds:
+        if kind == "self_harm":
+            parts.append(f"{_SELF_HARM_INTRO} {_SELF_HARM_988}")
+        else:
+            parts.append(EMERGENCY_HEADER)
+            if symptom in _KIND_LINES:
+                parts.append(_KIND_LINES[symptom])
+    if "emergency" in kinds:
+        also_988 = " or 988" if "self_harm" in kinds else ""
+        parts.append(f"This assistant cannot assess emergencies. Please contact emergency services{also_988} "
+                     "before anything else.")
+    else:
+        parts.append("If you are in immediate danger, call 911. I can't help with this question, "
+                     "but people at 988 can, right now.")
+    return "\n\n".join(parts)

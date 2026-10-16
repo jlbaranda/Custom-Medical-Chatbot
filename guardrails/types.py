@@ -59,6 +59,7 @@ class Decision:
     intent: Intent | None
     risk: float
     reason: str
+    kinds: tuple[str, ...] = ()  # for EMERGENCY: which messages to show, in order ("emergency", "self_harm")
 
 
 @dataclass(frozen=True)
@@ -95,3 +96,6 @@ class GuardedResponse:
     text: str
     citations: list[Passage]
     trace: Trace
+    # Human-readable "why", including the question-derived text that was blocked. In memory only,
+    # never written to the decision log.
+    debug: dict = field(default_factory=dict)

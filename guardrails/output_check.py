@@ -33,9 +33,12 @@ _PERSONAL_CLAIM = re.compile(
 class OutputCheck:
     kept: list[tuple[str, list[int]]] = field(default_factory=list)
     dropped: dict[str, int] = field(default_factory=dict)
+    dropped_sentences: list[tuple[str, str]] = field(default_factory=list)  # (reason, text); debug only
 
-    def drop(self, reason: str) -> None:
+    def drop(self, reason: str, sentence: str = "") -> None:
         self.dropped[reason] = self.dropped.get(reason, 0) + 1
+        if sentence:
+            self.dropped_sentences.append((reason, sentence))
 
     @property
     def cited_ids(self) -> list[int]:
@@ -61,7 +64,7 @@ def check_output(answer: str, passages: list[Passage], config: dict, action: str
             continue
         valid = [n for n in cites if 1 <= n <= len(passages)]
         if not valid and require_citations:
-            result.drop("uncited" if not cites else "bad_citation")
+            result.drop("uncited" if not cites else "bad_citation", sentence)
             continue
         # With the citation filter off, an uncited sentence is checked against every
         # retrieved passage instead of the one it names.
@@ -70,16 +73,16 @@ def check_output(answer: str, passages: list[Passage], config: dict, action: str
         words = content_tokens(bare)
         support = sum(w in source_tokens for w in words) / len(words)
         if support < min_support:
-            result.drop("unsupported")
+            result.drop("unsupported", sentence)
             continue
         if any(num not in source_text for num in _NUMBER.findall(bare)):
-            result.drop("number_not_in_source")
+            result.drop("number_not_in_source", sentence)
             continue
         if block_doses and _DOSE.search(bare):
-            result.drop("dose")
+            result.drop("dose", sentence)
             continue
         if _PERSONAL_CLAIM.search(bare):
-            result.drop("personal_claim")
+            result.drop("personal_claim", sentence)
             continue
         result.kept.append((bare, valid))
     return result

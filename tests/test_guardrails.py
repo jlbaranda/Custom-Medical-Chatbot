@@ -75,6 +75,48 @@ def test_gr01_emergency_overrides_classifier():
     assert r.text.splitlines()[0].startswith("**If you or someone else")
 
 
+def test_gr01_stacked_emergency_message_has_no_repeated_parts():
+    from guardrails.emergency import emergency_response
+
+    text = emergency_response(["self_harm", "emergency"])
+    assert "988" in text and "911" in text
+    assert text.count("This assistant cannot assess") == 1 and text.count("I'm really sorry") == 1
+
+
+def test_gr01_classifier_self_harm_always_adds_911_and_close_emergency_adds_988():
+    p = GuardrailPolicy.from_file()
+    probs = {i: 0.0 for i in INTENTS}
+    probs.update({Intent.SELF_HARM: 0.41, Intent.EMERGENCY: 0.26, Intent.INFO: 0.33})
+    assert p.decide(Classification(probs, 1, 0, "f")).kinds == ("self_harm", "emergency")
+    probs.update({Intent.SELF_HARM: 0.05, Intent.EMERGENCY: 0.9})
+    assert p.decide(Classification(probs, 1, 0, "f")).kinds == ("emergency",)
+    probs.update({Intent.SELF_HARM: 0.4, Intent.EMERGENCY: 0.6})
+    assert p.decide(Classification(probs, 1, 0, "f")).kinds == ("emergency", "self_harm")
+
+
+def test_debug_shows_layer_stage_probabilities_and_blocked_draft():
+    r = bot(cls(Intent.DOSING)).ask("how much tylenol for my kid")
+    assert r.debug["stage"] == "before LLM" and r.debug["probabilities"]["dosing"] == "95%"
+    assert "dosing risk" in "".join(r.debug["thresholds"])
+    weak = Passage("c2", "Unrelated text about car engines.", "x", "y", "z", 1.0)
+    r = bot(cls(Intent.INFO, personal=0), passages=[weak]).ask("what is anemia")
+    assert r.debug["blocked_by"].startswith("retrieval gate")
+
+
+def test_debug_shows_llm_draft_when_output_check_blocks():
+    class Bad:
+        name = "bad"
+
+        def generate(self, q, p):
+            return "You likely have anemia because of fatigue and weakness. [1]"
+
+    b = GuardedChatbot(FakeClassifier(cls(Intent.INFO, personal=0)), FakeRetriever([ANEMIA]), Bad(),
+                       GuardrailPolicy.from_file())
+    r = b.ask("what is anemia")
+    assert r.action is Action.NO_SUPPORT and r.debug["stage"] == "after LLM"
+    assert r.debug["dropped_sentences"][0]["reason"] == "personal_claim" and "You likely" in r.debug["llm_draft"]
+
+
 def test_gr01_self_harm_gives_988():
     r = bot(cls(Intent.INFO)).ask("i want to end my life")
     assert r.action is Action.EMERGENCY and "988" in r.text

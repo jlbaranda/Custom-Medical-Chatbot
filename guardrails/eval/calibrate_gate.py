@@ -43,8 +43,10 @@ def main() -> None:
     for s, y, text, title in sorted(scored, reverse=True):
         flag = "" if (s >= best_t) == bool(y) else "  <-- wrong side"
         print(f"{s:6.1f} {'ANS' if y else 'out'} {text[:55]:55s} | {title[:35]}{flag}")
-    print(f"\nbest threshold {best_t} balanced acc {best_bacc:.3f} "
-          f"(current min_rerank_score {cfg['min_rerank_score']}), {per_q:.2f}s/question")
+    cur = cfg["min_rerank_score"]
+    cur_bacc = (sum(s >= cur for s in pos) / len(pos) + sum(s < cur for s in neg) / len(neg)) / 2
+    print(f"\nbest threshold {best_t} balanced acc {best_bacc:.3f} | "
+          f"current min_rerank_score {cur} balanced acc {cur_bacc:.3f} | {per_q:.2f}s/question")
 
 
 if __name__ == "__main__":

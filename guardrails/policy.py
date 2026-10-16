@@ -47,8 +47,16 @@ class GuardrailPolicy:
     def decide(self, c: Classification) -> Decision:
         urgent = sum(c.intent_probs[i] for i in URGENT_INTENTS)
         if urgent >= self.config["emergency"]["classifier_threshold"]:
-            top = max(URGENT_INTENTS, key=lambda i: c.intent_probs[i])
-            return Decision(Action.EMERGENCY, "classifier", top, urgent, f"P(urgent)={urgent:.2f}")
+            pe, ps = c.intent_probs[Intent.EMERGENCY], c.intent_probs[Intent.SELF_HARM]
+            if ps > pe:
+                # Held-out mix-ups were all emergencies read as self-harm, so 911 is always added.
+                top, kinds = Intent.SELF_HARM, ("self_harm", "emergency")
+            elif ps >= self.config["emergency"]["combine_ratio"] * pe:
+                top, kinds = Intent.EMERGENCY, ("emergency", "self_harm")
+            else:
+                top, kinds = Intent.EMERGENCY, ("emergency",)
+            return Decision(Action.EMERGENCY, "classifier", top, urgent,
+                            f"P(emergency)={pe:.2f} + P(self_harm)={ps:.2f} >= threshold", kinds)
 
         # Pick the risky intent whose risk is furthest past its own redirect threshold.
         best: tuple[float, Intent, float] | None = None

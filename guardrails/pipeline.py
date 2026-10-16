@@ -86,7 +86,7 @@ class GuardedChatbot:
             trace.emergency = {"tier": em.tier, "kind": em.kind, "score": em.score}
         if em.tier == "active":
             kind = Intent.SELF_HARM if em.kind == "self_harm" else Intent.EMERGENCY
-            return Decision(Action.EMERGENCY, "emergency", kind, em.score, em.reason)
+            return Decision(Action.EMERGENCY, "emergency", kind, em.score, em.reason, (kind.value,))
         c = self.classifier.classify(text)
         if trace is not None:
             trace.classification = c.to_dict()
@@ -102,7 +102,7 @@ class GuardedChatbot:
                 trace.emergency = {"tier": "active", "kind": kind, "score": earlier.risk, "sticky": True}
                 trace.conversation["context_decided"] = True
                 return Decision(Action.EMERGENCY, "conversation", earlier.intent, earlier.risk,
-                                "emergency earlier in conversation")
+                                "emergency earlier in conversation", earlier.kinds)
         # A follow-up is also judged together with the turns before it, and the stricter
         # decision wins, so a risky request cannot be split across messages.
         if follow_up:
@@ -121,41 +121,84 @@ class GuardedChatbot:
         trace = Trace(uuid.uuid4().hex)
         decision, query = self.screen(question, trace, history)
         response = self._respond(decision, query, trace)
+        response.debug = {**self._debug(decision, trace), **response.debug}
         if self.log:
             self.log.write(trace)
         return response
 
     def _respond(self, decision: Decision, text: str, trace: Trace) -> GuardedResponse:
         if decision.action is Action.EMERGENCY:
-            from .emergency import EmergencyResult
-
-            kind = "self_harm" if decision.intent is Intent.SELF_HARM else (trace.emergency or {}).get("kind")
-            return GuardedResponse(Action.EMERGENCY, emergency_response(EmergencyResult("active", kind, 1.0)), [], trace)
+            kinds = list(decision.kinds) or ["self_harm" if decision.intent is Intent.SELF_HARM else "emergency"]
+            text_out = emergency_response(kinds, symptom=(trace.emergency or {}).get("kind"))
+            return GuardedResponse(Action.EMERGENCY, text_out, [], trace, {"stage": "before LLM"})
 
         decline = responses.DECLINE.get(decision.intent) if decision.action is not Action.ANSWER else None
         if decision.action is Action.REFUSE:
-            return GuardedResponse(Action.REFUSE, decline or responses.NO_SUPPORT, [], trace)
+            return GuardedResponse(Action.REFUSE, decline or responses.NO_SUPPORT, [], trace, {"stage": "before LLM"})
 
         t0 = time.perf_counter()
         gate = retrieval_gate(self.retriever, text, self.policy.config, redirect=decision.action is Action.REDIRECT,
                               reranker=self.reranker)
         trace.retrieval = gate.to_dict()
         trace.latency_ms["retrieval"] = _ms(t0)
+        threshold = self.policy.config["retrieval"]["min_rerank_score_redirect" if decision.action is Action.REDIRECT
+                                                    else "min_rerank_score"] if self.reranker else None
+        retrieval_debug = {"retrieval": {"passed": gate.passed, "reason": gate.reason, "top_score": round(gate.top_score, 2),
+                                         "threshold": threshold,
+                                         "top_sources": [f"{p.title} ({p.score:.1f})" for p in gate.passages[:3]]}}
         if not gate.passed:
-            return self._no_support(decision, decline, trace)
+            response = self._no_support(decision, decline, trace)
+            response.debug = {"stage": "before LLM", "blocked_by": "retrieval gate (no strong source)", **retrieval_debug}
+            return response
 
         t0 = time.perf_counter()
         draft = self.generator.generate(text, gate.passages)
         trace.latency_ms["generation"] = _ms(t0)
         check = check_output(draft, gate.passages, self.policy.config, decision.action.value)
         trace.output_check = check.to_dict()
+        output_debug = {**retrieval_debug, "llm_draft": draft,
+                        "dropped_sentences": [{"reason": r, "sentence": s} for r, s in check.dropped_sentences]}
         if not check.kept:
-            return self._no_support(decision, decline, trace)
+            response = self._no_support(decision, decline, trace)
+            response.debug = {"stage": "after LLM",
+                              "blocked_by": "output check (every sentence of the LLM draft was dropped)", **output_debug}
+            return response
 
         body, sources = render(check, gate.passages)
         banner = (trace.emergency or {}).get("tier") == "informational"
         text_out = responses.compose(body, sources, decline=decline, banner=banner)
-        return GuardedResponse(decision.action, text_out, sources, trace)
+        partial = f"output check removed {len(check.dropped_sentences)} sentence(s)" if check.dropped_sentences else None
+        return GuardedResponse(decision.action, text_out, sources, trace,
+                               {"stage": "after LLM", "blocked_by": partial, **output_debug})
+
+    def _debug(self, decision: Decision, trace: Trace) -> dict:
+        """What fired and why, in readable form: probabilities as percentages and the
+        thresholds they were compared against."""
+        by_layer = {"emergency": "emergency fast path (regex match)", "classifier": "classifier (urgent probability)",
+                    "policy": "classifier + policy thresholds", "conversation": "conversation context"}
+        out = {"action": decision.action.value, "guardrail": by_layer.get(decision.layer, decision.layer),
+               "reason": decision.reason}
+        if decision.kinds:
+            out["emergency_messages"] = list(decision.kinds)
+        em = trace.emergency or {}
+        if em.get("tier"):
+            out["emergency_regex"] = f"{em['tier']} ({em.get('kind')})" + (" [from earlier turn]" if em.get("sticky") else "")
+        c = trace.classification
+        if c:
+            pct = lambda x: f"{100 * x:.0f}%"  # noqa: E731
+            out["probabilities"] = {k: pct(v) for k, v in sorted(c["intent_probs"].items(), key=lambda kv: -kv[1])}
+            out["personal"], out["injection"] = pct(c["personal"]), pct(c["injection"])
+            cfg = self.policy.config
+            out["thresholds"] = {"urgent (emergency + self_harm)": pct(cfg["emergency"]["classifier_threshold"]),
+                                 "injection": pct(cfg["risk"]["injection_threshold"])}
+            if decision.intent and decision.intent.value in cfg["intents"]:
+                t = cfg["intents"][decision.intent.value]
+                out["thresholds"][f"{decision.intent.value} risk"] = (
+                    f"redirect {pct(t['redirect'] + self.policy.shift)}, refuse {pct(min(1.0, t['refuse'] + self.policy.shift))}"
+                    f" (risk was {pct(decision.risk)})")
+        if trace.conversation and trace.conversation.get("prior_user_turns"):
+            out["conversation"] = trace.conversation
+        return out
 
     @staticmethod
     def _no_support(decision: Decision, decline: str | None, trace: Trace) -> GuardedResponse:
