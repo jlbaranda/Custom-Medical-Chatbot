@@ -46,7 +46,7 @@ class CrossEncoderReranker:
     """Scores (query, passage) relevance jointly. Its score is what the gate trusts:
     unlike raw BM25 it is comparable across queries, so one threshold works."""
 
-    def __init__(self, model_name: str, max_length: int = 256, quantize: bool = False):
+    def __init__(self, model_name: str, max_length: int = 512, quantize: bool = False):
         import torch
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
@@ -63,8 +63,20 @@ class CrossEncoderReranker:
         if not passages:
             return []
         with self._torch.inference_mode():
-            enc = self.tokenizer([query] * len(passages), [p.text for p in passages], truncation=True,
-                                 max_length=self.max_length, padding=True, return_tensors="pt")
+            documents = [
+                f"{p.title}. {p.text}"
+                if p.title
+                else p.text
+                for p in passages
+            ]
+            enc = self.tokenizer(
+                [query] * len(passages),
+                documents,
+                truncation=True,
+                max_length=self.max_length,
+                padding=True,
+                return_tensors="pt",
+            )
             scores = self.model(**enc).logits.squeeze(-1).tolist()
         rescored = [Passage(p.chunk_id, p.text, p.title, p.publisher, p.source_url, float(s))
                     for p, s in zip(passages, scores)]

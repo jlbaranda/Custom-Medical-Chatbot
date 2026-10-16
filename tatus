@@ -1,0 +1,10 @@
+[33mf44d5ee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Updated HTML document cleaners
+ ingestion/cleaners/html_cleaner.py                 | 22 [32m+++++++++++++[m
+ ingestion/sources/medlineplus/summary_documents.py | 12 [32m+++++[m[31m--[m
+ retrieval/pubmedbert.py                            |  0
+ scripts/build_rag_index.py                         |  0
+ scripts/test_pubmedbert_retrieval.py               |  0
+ scripts/test_qwen_rag.py                           |  0
+ scripts/test_reranking.py                          |  0
+ tests/test_summary_documents.py                    | 38 [32m++++++++++++++++++++++[m
+ 8 files changed, 69 insertions(+), 3 deletions(-)
