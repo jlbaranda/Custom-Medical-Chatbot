@@ -34,6 +34,10 @@ Install the project dependencies:
 python -m pip install -r requirements.txt
 ```
 ## Asking Question
+```powershell
+ollama pull huggingface.co/unsloth/Qwen3.5-4B-GGUF:latest
+ollama pull hf.co/cmiralop/BiomedNLP-PubMedBERT-Base-Uncased-Abstract-Fulltext-109M:F16
+```
 
 after creating a virtual environment run this, replacing hello with your question.
 ```powershell
