@@ -99,6 +99,11 @@ class GateResult:
 def retrieval_gate(retriever: Retriever, query: str, config: dict, redirect: bool = False,
                    reranker: CrossEncoderReranker | None = None) -> GateResult:
     cfg = config["retrieval"]
+    # Explicit two-condition questions need evidence from BOTH topics.
+    from .comparison import detect_comparison, comparison_retrieval_gate
+    topics = detect_comparison(query)
+    if topics is not None:
+        return comparison_retrieval_gate(retriever, query, config, topics, redirect=redirect, reranker=reranker)
     if reranker is not None:
         passages = reranker.rerank(query, retriever.search(query, cfg["candidates"]))[: cfg["top_k"]]
         top = passages[0].score if passages else float("-inf")

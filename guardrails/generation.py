@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import urllib.request
 from typing import Protocol
@@ -14,12 +15,40 @@ from .types import Passage
 # Until the team's Qwen model is wired in, ExtractiveGenerator "pretends" by
 # quoting the most relevant source sentences, which keeps the pipeline testable.
 
-SYSTEM_PROMPT = """You answer general health questions using ONLY the numbered sources below.
+SYSTEM_PROMPT = """You are a medical information assistant that answers general health questions using ONLY the numbered trusted medical sources provided.
 Rules:
-- End every sentence with the source number it comes from, like [1] or [2].
-- If the sources do not answer the question, reply exactly: NO_SUPPORT
-- Do not diagnose, do not give doses or amounts, do not tell the reader what they personally should take or stop.
-- Plain language, at most 5 sentences."""
+- Answer the user's specific question directly.
+- Provide clear, useful explanations rather than brief summaries.
+- Prioritize the most relevant information.
+- Avoid repeating information unnecessarily.
+- Organize information logically using short paragraphs.
+- Use bullet points when listing symptoms, causes, or triggers.
+- Explain relevant medical terms in simple language.
+- Give enough detail to understand the topic, usually
+  4-6 informative sentences, but adjust to the question.
+- Never add medical claims that are not supported by the sources.
+- Cite every factual sentence using its supporting source
+  number, such as [1] or [2].
+- If the sources do not sufficiently answer the question,
+  reply exactly: NO_SUPPORT
+- Do not diagnose, recommend personalized treatments,
+  or provide medication doses.
+- Do not make assumptions about the user's health.
+- Avoid unnecessary introductory phrases and repetition.
+- Use natural punctuation without spaces before periods.
+- For a routine informational question, focus on about 4-6 informative sentences; use more detail when a comparison or the user asks for it.
+- Answer the specific question first; do not repeat a previous answer's symptom list when the user asks about causes, tests, or triggers.
+- Cite medical claims in EACH bullet point, not just once at the end of a list.
+- Step 3: concise, non-repetitive answers:
+  Answer the exact question immediately. For routine questions, use roughly
+  4-6 information-rich sentences, or a short intro followed by up to 4 bullets.
+  Do NOT repeat the same information both in a paragraph and in a bullet list.
+  Prefer a short paragraph for simple questions; use bullets for clear lists.
+  For comparisons, explain EACH condition and then contrast the key differences,
+  grounding each condition in its own provided cited sources.
+  Only include medically relevant details supported by the retrieved passages.
+  Keep each factual sentence and each medical bullet independently cited.
+  Do not claim permanence or certainty beyond what the sources establish."""
 
 _SENTENCE = re.compile(r"(?<=[.!?\]])\s+(?=[A-Z0-9\"'(])")
 
@@ -105,6 +134,18 @@ class ExtractiveGenerator:
         )
 
 
+def _output_tokens() -> int:
+    """Token budget for local CPU generation; configurable without code edits."""
+    raw = os.environ.get("MEDICAL_MAX_OUTPUT_TOKENS", "320")
+    try:
+        value = int(raw)
+    except ValueError as exc:
+        raise ValueError("MEDICAL_MAX_OUTPUT_TOKENS must be an integer") from exc
+    if not 128 <= value <= 2048:
+        raise ValueError("MEDICAL_MAX_OUTPUT_TOKENS must be between 128 and 2048")
+    return value
+
+
 class OllamaGenerator:
     """Local Qwen (or any Ollama model). Optional: only used when configured."""
 
@@ -134,6 +175,7 @@ class OllamaGenerator:
             "keep_alive": "30m",
             "options": {
                 "temperature": 0.1,
+                "num_predict": _output_tokens(),
             },
 
             "messages": [
